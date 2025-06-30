@@ -1,0 +1,122 @@
+# 📋 Task Management Rule **v7.1** – GitHub Integration
+
+*(supersedes v7.0 – adds mandatory **self-review & fix** workflow)*
+
+---
+
+## 🚨 CRITICAL WORKFLOW ENFORCEMENT
+
+**TASK MANAGEMENT SYSTEM**: GitHub Issues & Projects (via MCP Protocol)
+**REPOSITORY**: Current workspace repository
+**INTEGRATION**: Full GitHub ecosystem (Issues, PRs, Comments, Projects)
+
+---
+
+### ⚡ **MANDATORY TASK WORKFLOW**
+
+Before **any** code implementation, follow this exact sequence:
+
+| #                                                                        | Phase                          | Mandatory Action                                                            |
+| ------------------------------------------------------------------------ | ------------------------------ | --------------------------------------------------------------------------- |
+| 1                                                                        | **🔍 UNDERSTAND REQUEST**      | Clarify user requirements fully                                             |
+| 2                                                                        | **📋 CREATE GITHUB ISSUE**     | `mcp_github_create_issue`                                                   |
+| 3                                                                        | **🌿 CREATE BRANCH**           | `mcp_github_create_branch`                                                  |
+| 4                                                                        | **📝 PLAN IMPLEMENTATION**     | Design approach & architecture                                              |
+| 5                                                                        | **⚡ IMPLEMENT**                | Write code with proper testing                                              |
+| 6                                                                        | **📊 OPEN PULL REQUEST**       | `mcp_github_create_pull_request`                                            |
+| 7                                                                        | **🕵️‍♂️ SELF-REVIEW PR**      | • `mcp_github_create_pending_pull_request_review`                           |
+| • Inspect diff, add line comments for every detected issue / improvement |                                |                                                                             |
+| • `mcp_github_submit_pending_pull_request_review` (state = “COMMENT”)    |                                |                                                                             |
+| 8                                                                        | **🔨 ADDRESS SELF-REVIEW**     | • Fix all items raised in step 7                                            |
+| • `mcp_github_push_files` with fixes                                     |                                |                                                                             |
+| • `mcp_github_update_pull_request` summarising changes                   |                                |                                                                             |
+| 9                                                                        | **🤝 REQUEST EXTERNAL REVIEW** | Assign human and/or Copilot reviewers                                       |
+| 10                                                                       | **🚀 MERGE & CLOSE**           | After all reviews pass ➜ `mcp_github_merge_pull_request` ➜ auto-close issue |
+
+> **Key change**: Steps 7–8 are **non-skippable**. The agent must review its own PR **immediately** after creation and resolve every finding before soliciting external reviews.
+
+---
+
+### 🛠️ **GitHub MCP Commands**
+
+*(unchanged except for emphasis on self-review tools)*
+
+#### Core Issue Management
+
+… *(same as v7.0)* …
+
+#### Branch & PR Management
+
+… *(same as v7.0)* …
+
+#### Code Review & Collaboration
+
+* `mcp_github_create_pending_pull_request_review` **(required in step 7)**
+* `mcp_github_submit_pending_pull_request_review` **(required in step 7)**
+* `mcp_github_request_copilot_review`
+* `mcp_github_assign_copilot_to_issue`
+
+---
+
+### 🚨 **VIOLATION PREVENTION**
+
+If you are **not 90 % certain** about any workflow aspect, **ASK** follow-up questions before proceeding.
+
+Failing to perform the mandatory **self-review (steps 7–8)** is a **critical violation**.
+
+---
+
+### ❌ **FORBIDDEN ACTIONS**
+
+Never:
+
+* Skip self-review before requesting outside review
+* Merge a PR with unresolved self-review comments
+
+*(all other forbidden actions from v7.0 remain in force)*
+
+---
+
+### ✅ **REQUIRED ACTIONS**
+
+1. Create GitHub issue with clear title, description, labels
+2. Create feature branch from main/master
+3. Include complexity estimate & priority in issue
+4. Add relevant labels (bug, enhancement, documentation, …)
+5. Implement with tests & error handling
+6. Open PR referencing issue
+7. **Perform mandatory self-review (create & submit review comments)**
+8. **Fix every self-review finding and update PR**
+9. Request external reviews (human and/or Copilot)
+10. Update issue with progress comments
+11. Merge PR & auto-close issue
+
+---
+
+### 📊 **Quality Gates**
+
+Before soliciting external review:
+
+* ✅ All self-review comments addressed
+* ✅ All tests pass
+* ✅ Documentation updated
+* ✅ No breaking changes
+* ✅ PR description links to issue & summarizes self-review fixes
+
+*(other gates unchanged)*
+
+---
+
+### 🎯 **Workflow Patterns**
+
+*(each pattern now includes mandatory self-review between PR creation and external review)*
+
+* **New Features / Enhancements** …
+* **Bug Fixes** …
+* **Documentation** …
+
+---
+
+*All other sections (Issue templates, Labels, Metrics, Automation, etc.) are unchanged from v7.0 and remain in effect.*
+
+---
