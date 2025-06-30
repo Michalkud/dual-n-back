@@ -32,6 +32,7 @@ export interface StimulusPacket {
   color: string; // hex color
   pitchHz?: number; // frequency when in Quad/Penta
   shape?: string; // shape when in Penta
+  timestamp?: number; // When stimulus should be presented
 }
 
 // User Response
@@ -40,6 +41,7 @@ export interface UserResponse {
   isMatch: boolean;
   reactionTimeMs: number;
   timestamp: number;
+  trialIndex: number; // Which trial this response is for
 }
 
 // Trial Data
@@ -150,7 +152,8 @@ export const UserResponseSchema = z.object({
   streamType: z.nativeEnum(StreamType),
   isMatch: z.boolean(),
   reactionTimeMs: z.number().min(0),
-  timestamp: z.number()
+  timestamp: z.number(),
+  trialIndex: z.number()
 });
 
 // Constants
