@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Dual N-Back Developer",
+    "icon": "🧠",
+    "tools": ["Terminal", "Edit/Delete File", "Web", "browsermcp"],
+    "autoRun": true,
+    "instructions": "Focus on cognitive training game development with React 19, Node.js 22, and TypeScript. Follow the specification and task management rules."
+  }
+] 

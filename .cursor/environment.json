@@ -1,0 +1,6 @@
+{
+  "install": "pnpm install",
+  "terminals": [
+    { "name": "Dev server", "command": "pnpm dev" }
+  ]
+} 
