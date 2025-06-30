@@ -1,4 +1,4 @@
-# Cursor Project Rules for food-ordering-agent
+# Cursor Project Rules for dual-n-back
 
 This directory contains project-specific rules for Cursor AI, following best practices for maintainability, clarity, and automation. Rules here guide the AI agent and Cmd-K workflows, ensuring consistent behavior and standards across the codebase.
 

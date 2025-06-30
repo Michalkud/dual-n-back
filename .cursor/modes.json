@@ -1,9 +1,9 @@
 [
   {
-    "name": "Rohlik Builder",
-    "icon": "🛒",
-    "tools": ["browsermcp", "spec-generator", "Web", "Terminal", "Edit/Delete File"],
+    "name": "Dual N-Back Developer",
+    "icon": "🧠",
+    "tools": ["Terminal", "Edit/Delete File", "Web", "browsermcp"],
     "autoRun": true,
-    "instructions": "If prompt mentions Rohlik, activate rohlik-workflow rule and summarise each major step."
+    "instructions": "Focus on cognitive training game development with React 19, Node.js 22, and TypeScript. Follow the specification and task management rules."
   }
 ] 

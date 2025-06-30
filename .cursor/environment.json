@@ -1,6 +1,6 @@
 {
-  "install": "npm ci",
+  "install": "pnpm install",
   "terminals": [
-    { "name": "Dev server", "command": "npm run dev" }
+    { "name": "Dev server", "command": "pnpm dev" }
   ]
 } 
