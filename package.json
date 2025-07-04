@@ -1,40 +1,49 @@
 {
   "name": "dual-n-back",
   "version": "1.0.0",
-  "description": "Dual N-Back cognitive training game implementation",
+  "description": "A web-based N-Back trainer that supports three difficulty tiers with offline-first architecture",
   "private": true,
   "workspaces": [
-    "apps/*",
     "packages/*"
   ],
   "scripts": {
-    "dev": "concurrently \"pnpm --filter web dev\" \"pnpm --filter api dev\"",
-    "dev:web": "pnpm --filter web dev",
-    "dev:api": "pnpm --filter api dev",
-    "build": "pnpm --filter shared build && pnpm --filter api build && pnpm --filter web build",
-    "build:web": "pnpm --filter web build",
-    "build:api": "pnpm --filter api build",
-    "test": "pnpm --filter \"...\" test",
-    "test:e2e": "pnpm --filter web test:e2e",
-    "lint": "pnpm --filter \"...\" lint",
-    "type-check": "pnpm --filter \"...\" type-check",
-    "clean": "pnpm --filter \"...\" clean",
-    "db:generate": "pnpm --filter api db:generate",
-    "db:push": "pnpm --filter api db:push",
-    "db:migrate": "pnpm --filter api db:migrate",
-    "docker:dev": "docker-compose -f docker-compose.dev.yml up",
-    "docker:build": "docker-compose build",
-    "install:all": "pnpm install --recursive"
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "npm run dev --workspace=@dual-n-back/frontend",
+    "dev:backend": "npm run dev --workspace=@dual-n-back/backend",
+    "build": "npm run build:shared && npm run build:frontend && npm run build:backend",
+    "build:shared": "npm run build --workspace=@dual-n-back/shared",
+    "build:frontend": "npm run build --workspace=@dual-n-back/frontend",
+    "build:backend": "npm run build --workspace=@dual-n-back/backend",
+    "test": "npm run test --workspaces --if-present",
+    "test:frontend": "npm run test --workspace=@dual-n-back/frontend",
+    "test:backend": "npm run test --workspace=@dual-n-back/backend",
+    "lint": "npm run lint --workspaces --if-present",
+    "lint:fix": "npm run lint:fix --workspaces --if-present",
+    "db:generate": "npm run db:generate --workspace=@dual-n-back/backend",
+    "db:push": "npm run db:push --workspace=@dual-n-back/backend",
+    "db:studio": "npm run db:studio --workspace=@dual-n-back/backend",
+    "db:migrate": "npm run db:migrate --workspace=@dual-n-back/backend",
+    "clean": "npm run clean --workspaces --if-present && rm -rf node_modules",
+    "install:all": "npm install && npm run build:shared"
   },
+  "keywords": [
+    "dual-n-back",
+    "cognitive-training",
+    "working-memory",
+    "web-app",
+    "react",
+    "typescript"
+  ],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "@types/node": "^22.0.0",
-    "concurrently": "^8.2.2",
-    "prettier": "^3.3.3",
-    "typescript": "^5.5.4"
+    "concurrently": "^9.0.1"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.11"
   },
   "engines": {
     "node": ">=22.0.0",
-    "pnpm": ">=9.0.0"
-  },
-  "packageManager": "pnpm@9.5.0"
-} 
+    "npm": ">=10.0.0"
+  }
+}

@@ -1,31 +1,23 @@
 {
   "name": "@dual-n-back/shared",
   "version": "1.0.0",
-  "description": "Shared types and utilities for Dual N-Back application",
+  "description": "Shared types and utilities for Dual N-Back Trainer",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "clean": "rm -rf dist",
-    "lint": "eslint src --ext .ts,.tsx",
-    "type-check": "tsc --noEmit"
+    "clean": "rm -rf dist"
   },
-  "dependencies": {
-    "@types/node": "^22.10.1",
-    "zod": "^3.24.1"
-  },
+  "keywords": [
+    "dual-n-back",
+    "cognitive-training",
+    "types"
+  ],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.16.1",
-    "@typescript-eslint/parser": "^7.16.1",
-    "eslint": "^8.57.0",
-    "typescript": "^5.5.4"
-  },
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    }
+    "@types/node": "^22.0.0",
+    "typescript": "^5.0.0"
   }
-} 
+}
