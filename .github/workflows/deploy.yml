@@ -31,7 +31,10 @@ jobs:
     - name: Install dependencies
       run: pnpm install --no-frozen-lockfile
       
-    - name: Build
+    - name: Build shared package
+      run: pnpm --filter @dual-n-back/shared build
+      
+    - name: Build web app
       run: pnpm --filter web build
       
     - name: Setup Pages
