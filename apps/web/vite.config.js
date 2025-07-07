@@ -7,8 +7,7 @@ export default defineConfig({
     base: '/dual-n-back/',
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, './src'),
-            '@dual-n-back/shared': path.resolve(__dirname, '../../packages/shared/src')
+            '@': path.resolve(__dirname, './src')
         }
     },
     server: {

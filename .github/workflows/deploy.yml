@@ -34,9 +34,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Build shared package
-        run: pnpm --filter shared build
-
       - name: Build web application
         run: pnpm --filter web build
 
