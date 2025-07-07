@@ -291,8 +291,7 @@ export const useGameStore = create<GameState>()(
         streamType,
         isMatch,
         reactionTimeMs: reactionTime,
-        timestamp: Date.now(),
-        trialIndex: currentStimulus.index
+        timestamp: Date.now()
       };
 
       // Add to recent responses for local tracking
@@ -304,7 +303,7 @@ export const useGameStore = create<GameState>()(
       socket.emit('userResponse', response);
 
       // Provide immediate feedback
-      const feedbackType = streamType === StreamType.VISUAL_POSITION ? 'Visual' : 'Audio';
+      const feedbackType = streamType === StreamType.POSITION ? 'Visual' : 'Audio';
       const responseText = isMatch ? 'Match' : 'No match';
       set({ 
         feedbackMessage: `${feedbackType}: ${responseText} (${reactionTime}ms)` 

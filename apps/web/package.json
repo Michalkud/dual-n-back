@@ -29,6 +29,7 @@
     "@radix-ui/react-switch": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.2",
     "@tanstack/react-router": "^1.87.7",
+    "@types/react-router-dom": "^5.3.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.17",
@@ -36,6 +37,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.53.2",
+    "react-router-dom": "^7.6.3",
     "socket.io-client": "^4.8.1",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
@@ -69,4 +71,4 @@
   "engines": {
     "node": ">=22.0.0"
   }
-} 
+}

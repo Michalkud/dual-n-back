@@ -1,4 +1,4 @@
-import { Session, SessionSummary } from './game';
+import { Session } from './game';
 
 export interface User {
   id: string;

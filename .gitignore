@@ -8,6 +8,9 @@ dist/
 build/
 */dist/
 */build/
+packages/*/dist/
+packages/*/src/**/*.js
+!packages/*/src/**/*.config.js
 
 # Environment files
 .env

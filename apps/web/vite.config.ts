@@ -8,8 +8,7 @@ export default defineConfig({
   base: '/dual-n-back/',
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-      '@dual-n-back/shared': path.resolve(__dirname, '../../packages/shared/src')
+      '@': path.resolve(__dirname, './src')
     }
   },
   server: {
@@ -33,14 +32,12 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          router: ['react-router', 'react-router-dom'],
-          ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
-          charts: ['chart.js', 'react-chartjs-2']
+          router: ['react-router-dom']
         }
       }
     }
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'socket.io-client']
+    include: ['react', 'react-dom', 'socket.io-client', '@dual-n-back/shared']
   }
 }) 

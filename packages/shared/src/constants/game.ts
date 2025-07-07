@@ -67,6 +67,14 @@ export const VISUAL_CONFIG = {
   ],
 };
 
+export const CONSONANTS = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Z'];
+
+// Game flow constants
+export const DEFAULT_BLOCK_SIZE = 20;
+export const DEFAULT_ISI = 2.5; // Inter-stimulus interval in seconds
+export const PROMOTION_THRESHOLD = 0.8; // 80% accuracy to increase N
+export const DEMOTION_THRESHOLD = 0.5; // 50% accuracy to decrease N
+
 export const AUDIO_CONFIG = {
   // MIDI note frequencies (C4 to D#5)
   toneFrequencies: [

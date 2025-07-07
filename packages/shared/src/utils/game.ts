@@ -1,5 +1,5 @@
 import { Trial, SessionSummary, StreamType } from '../types';
-import { SCORING } from '../constants';
+import { SCORING, CONSONANTS } from '../constants';
 
 export function calculateAccuracy(trials: Trial[]): number {
   if (trials.length === 0) return 0;
@@ -48,7 +48,7 @@ export function calculateStreakMultiplier(streak: number): number {
   );
 }
 
-export function shouldIncreaseN(recentTrials: Trial[], threshold: number = 0.8): boolean {
+export function shouldIncreaseN(recentTrials: Trial[]): boolean {
   if (recentTrials.length < 3) return false;
   
   const lastThree = recentTrials.slice(-3);
@@ -110,13 +110,13 @@ export function isNBackMatch(currentStimulus: any, previousStimuli: any[], n: nu
 export function getActiveStreams(mode: 'dual' | 'quad' | 'penta'): StreamType[] {
   switch (mode) {
     case 'dual':
-      return ['position', 'letter'];
+      return [StreamType.POSITION, StreamType.LETTER];
     case 'quad':
-      return ['position', 'letter', 'color', 'tone'];
+      return [StreamType.POSITION, StreamType.LETTER, StreamType.COLOR, StreamType.TONE];
     case 'penta':
-      return ['position', 'letter', 'color', 'tone', 'shape'];
+      return [StreamType.POSITION, StreamType.LETTER, StreamType.COLOR, StreamType.TONE, StreamType.SHAPE];
     default:
-      return ['position', 'letter'];
+      return [StreamType.POSITION, StreamType.LETTER];
   }
 }
 
@@ -134,4 +134,22 @@ export function formatTime(milliseconds: number): string {
 
 export function formatAccuracy(accuracy: number): string {
   return `${Math.round(accuracy * 100)}%`;
+}
+
+export function getRandomPosition(): number {
+  return Math.floor(Math.random() * 9); // 0-8 for 3x3 grid
+}
+
+export function getRandomConsonant(): string {
+  const index = Math.floor(Math.random() * CONSONANTS.length);
+  return CONSONANTS[index];
+}
+
+export function generateUUID(): string {
+  // Simple UUID v4 implementation
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
 }

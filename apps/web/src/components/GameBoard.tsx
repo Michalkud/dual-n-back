@@ -26,10 +26,10 @@ const GameBoard: React.FC = () => {
     
     if (key === 'A') {
       // Visual position match response
-      submitResponse(StreamType.VISUAL_POSITION, true);
+      submitResponse(StreamType.POSITION, true);
     } else if (key === 'L') {
       // Audio letter match response  
-      submitResponse(StreamType.AUDIO_LETTER, true);
+      submitResponse(StreamType.LETTER, true);
     }
   }, [session, submitResponse]);
 

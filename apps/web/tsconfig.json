@@ -17,8 +17,7 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"],
-      "@dual-n-back/shared": ["../../packages/shared/src"]
+      "@/*": ["src/*"]
     },
     "types": ["vite/client", "jest", "@testing-library/jest-dom"]
   },

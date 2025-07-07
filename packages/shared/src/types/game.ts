@@ -1,4 +1,16 @@
-export type StreamType = 'position' | 'color' | 'shape' | 'tone' | 'letter';
+export enum StreamType {
+  POSITION = 'position',
+  COLOR = 'color',
+  SHAPE = 'shape',
+  TONE = 'tone',
+  LETTER = 'letter'
+}
+
+export enum Mode {
+  DUAL = 'DUAL',
+  QUAD = 'QUAD',
+  PENTA = 'PENTA'
+}
 
 export interface Stimulus {
   id: string;
@@ -98,4 +110,38 @@ export interface GameConfig {
     toneFrequencies: number[];
     letterSet: string[];
   };
+}
+
+// WebSocket Types
+export enum WSEvent {
+  SESSION_START = 'SESSION_START',
+  STIMULUS = 'STIMULUS',
+  USER_RESPONSE = 'USER_RESPONSE',
+  SCORE_UPDATE = 'SCORE_UPDATE',
+  BLOCK_END = 'BLOCK_END',
+  SESSION_END = 'SESSION_END'
+}
+
+export interface WSMessage {
+  event: WSEvent;
+  data: any;
+  timestamp: number;
+}
+
+// Stimulus packet for WebSocket communication
+export interface StimulusPacket {
+  index: number;
+  visualPos: number; // 0-8 (3x3 grid)
+  audioLetter: string; // consonant
+  color: string; // hex color
+  pitchHz?: number; // frequency when in Quad/Penta
+  shape?: string; // shape when in Penta
+}
+
+// User response tracking
+export interface UserResponse {
+  streamType: StreamType;
+  isMatch: boolean;
+  reactionTimeMs: number;
+  timestamp: number;
 }

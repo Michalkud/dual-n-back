@@ -197,7 +197,7 @@ export class GameEngine {
     for (let i = nLevel; i < Math.min(responses.length, stimuli.length); i++) {
       const currentStimulus = stimuli[i];
       const previousStimulus = stimuli[i - nLevel];
-      const response = responses.find(r => r.trialIndex === i);
+      const response = responses.find(r => (r as any).trialIndex === i);
 
       if (!response) continue;
 
@@ -205,7 +205,7 @@ export class GameEngine {
 
       // Check visual match accuracy
       const isVisualMatch = currentStimulus.visualPos === previousStimulus.visualPos;
-      const visualResponseCorrect = response.streamType === StreamType.VISUAL_POSITION ? 
+      const visualResponseCorrect = response.streamType === StreamType.POSITION ? 
         response.isMatch === isVisualMatch : 
         !isVisualMatch; // No response when no match is also correct
 
@@ -213,7 +213,7 @@ export class GameEngine {
 
       // Check audio match accuracy  
       const isAudioMatch = currentStimulus.audioLetter === previousStimulus.audioLetter;
-      const audioResponseCorrect = response.streamType === StreamType.AUDIO_LETTER ?
+      const audioResponseCorrect = response.streamType === StreamType.LETTER ?
         response.isMatch === isAudioMatch :
         !isAudioMatch; // No response when no match is also correct
 
