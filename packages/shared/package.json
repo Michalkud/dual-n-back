@@ -1,0 +1,23 @@
+{
+  "name": "@dual-n-back/shared",
+  "version": "1.0.0",
+  "description": "Shared types and utilities for Dual N-Back Trainer",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "dual-n-back",
+    "cognitive-training",
+    "types"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.0.0"
+  }
+}
