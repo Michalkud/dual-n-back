@@ -28,14 +28,37 @@ jobs:
       with:
         version: 9.5.0
         
+    - name: Get pnpm store directory
+      id: pnpm-cache
+      shell: bash
+      run: |
+        echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+    - name: Setup pnpm cache
+      uses: actions/cache@v4
+      with:
+        path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
+          
     - name: Install dependencies
-      run: pnpm install --no-frozen-lockfile
+      run: pnpm install --frozen-lockfile
       
+    - name: Debug workspace
+      run: |
+        echo "Current directory:"
+        pwd
+        echo "Workspace packages:"
+        pnpm ls -r --depth 0
+        echo "Shared package location:"
+        ls -la packages/shared/
+        
     - name: Build shared package
       run: pnpm --filter @dual-n-back/shared build
       
     - name: Build web app
-      run: pnpm --filter web build
+      run: pnpm --filter @dual-n-back/web build
       
     - name: Setup Pages
       uses: actions/configure-pages@v4
